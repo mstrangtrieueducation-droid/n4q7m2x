@@ -10,147 +10,835 @@ function input(id, prompt, answers, explanation, image = "") {
 
 const sections = [
   {
-    letter: "A", title: "Look and circle the correct words.",
-    note: "Nhìn từng hình rồi chọn từ đúng.", points: 3,
-    questions: [
-      choice("A1", "Picture 1", ["aunt", "uncle"], "uncle", "Hình là một người đàn ông trong gia đình, vì vậy từ đúng là uncle.", `${ASSET}page1-img_p0_2.png`),
-      choice("A2", "Picture 2", ["brother", "sister"], "sister", "Hình là một bạn gái, vì vậy từ đúng là sister.", `${ASSET}page1-img_p0_3.png`),
-      choice("A3", "Picture 3", ["friends", "parents"], "friends", "Hai bạn nhỏ đang khoác vai nhau. Họ là friends, không phải parents.", `${ASSET}page1-img_p0_6.png`)
+    "letter": "A",
+    "title": "Look and circle the correct words.",
+    "note": "Nhìn từng hình rồi chọn từ đúng.",
+    "points": 3,
+    "questions": [
+      {
+        "id": "A1",
+        "type": "choice",
+        "prompt": "Picture 1",
+        "options": [
+          "aunt",
+          "uncle"
+        ],
+        "answers": [
+          "uncle"
+        ],
+        "explanation": "Hình là một người đàn ông trong gia đình, vì vậy từ đúng là uncle.",
+        "image": "assets/extracted/page1-img_p0_2.png",
+        "points": 1
+      },
+      {
+        "id": "A2",
+        "type": "choice",
+        "prompt": "Picture 2",
+        "options": [
+          "brother",
+          "sister"
+        ],
+        "answers": [
+          "sister"
+        ],
+        "explanation": "Hình là một bạn gái, vì vậy từ đúng là sister.",
+        "image": "assets/extracted/page1-img_p0_3.png",
+        "points": 1
+      },
+      {
+        "id": "A3",
+        "type": "choice",
+        "prompt": "Picture 3",
+        "options": [
+          "friends",
+          "parents"
+        ],
+        "answers": [
+          "friends"
+        ],
+        "explanation": "Hai bạn nhỏ đang khoác vai nhau. Họ là friends, không phải parents.",
+        "image": "assets/extracted/page1-img_p0_6.png",
+        "points": 1
+      }
     ]
   },
   {
-    letter: "B", title: "Look and write the words.",
-    note: "Dùng các từ trong Word Bank để gọi đúng từng người trong gia đình.", points: 6,
-    wordBank: ["daughter", "father", "grandfather", "grandmother", "mother", "son", "friends"],
-    sectionImage: `${ASSET}page1-img_p0_5.png`,
-    imageMarkers: [
-      { label: "1", left: "15%", top: "76%" }, { label: "2", left: "32%", top: "76%" },
-      { label: "3", left: "45%", top: "81%" }, { label: "4", left: "57%", top: "76%" },
-      { label: "5", left: "72%", top: "78%" }, { label: "6", left: "88%", top: "79%" }
+    "letter": "B",
+    "title": "Look and write the words.",
+    "note": "Dùng các từ trong Word Bank để gọi đúng từng người trong gia đình.",
+    "points": 6,
+    "wordBank": [
+      "daughter",
+      "father",
+      "grandfather",
+      "grandmother",
+      "mother",
+      "son",
+      "friends"
     ],
-    questions: [
-      input("B1", "Picture 1", ["grandfather"], "Người đàn ông lớn tuổi là grandfather - ông."),
-      input("B2", "Picture 2", ["grandmother"], "Người phụ nữ lớn tuổi là grandmother - bà."),
-      input("B3", "Picture 3", ["son"], "Bạn trai nhỏ là son - con trai."),
-      input("B4", "Picture 4", ["father"], "Người đàn ông là father - bố."),
-      input("B5", "Picture 5", ["mother"], "Người phụ nữ là mother - mẹ."),
-      input("B6", "Picture 6", ["daughter"], "Bạn gái nhỏ là daughter - con gái.")
-    ]
-  },
-  {
-    letter: "C", title: "Listen and write the opposite of the words.",
-    note: "Nghe audio và viết từ có nghĩa trái ngược.", points: 3,
-    audio: "assets/audio/Listening-C.mp3",
-    questions: [
-      input("C1", "1. Write the opposite word.", ["son"], "Từ được đọc là daughter; từ trái nghĩa theo cặp gia đình là son."),
-      input("C2", "2. Write the opposite word.", ["old"], "Từ được đọc là young; từ trái nghĩa là old."),
-      input("C3", "3. Write the opposite word.", ["aunt"], "Từ được đọc là uncle; từ tương ứng chỉ người nữ là aunt.")
-    ]
-  },
-  {
-    letter: "D", title: "Look and complete the sentences. Use the correct form of be.",
-    note: "Nhìn chủ ngữ để chọn am, is hoặc are.", points: 5,
-    questions: [
-      input("D1", "They ___ sisters.", ["are", "they are"], "They chỉ nhiều người nên đi với are: They are sisters.", `${ASSET}page2-img_p1_2.png`),
-      input("D2", "He ___ young.", ["is", "he is"], "He là một người nam (cậu ấy/anh ấy) nên đi với is: He is young.", `${ASSET}page2-img_p1_4.png`),
-      input("D3", "It ___ big.", ["is", "it is"], "It chỉ một vật - ngôi nhà - nên đi với is: It is big.", `${ASSET}page2-img_p1_3.png`),
-      input("D4", "We ___ friends.", ["are", "we are"], "We nghĩa là chúng tôi/chúng ta, chỉ nhiều người nên đi với are: We are friends.", `${ASSET}page2-img_p1_5.png`),
-      input("D5", "She ___ cold.", ["is", "she is"], "She là một người nữ (cô ấy) nên đi với is: She is cold.", `${ASSET}page2-img_p1_6.png`)
-    ]
-  },
-  {
-    letter: "E", title: "Complete the sentences.",
-    note: "Dùng đúng dạng viết tắt trong Word Bank. Trang cũng chấp nhận dạng đầy đủ có cùng nghĩa.", points: 5,
-    wordBank: ["aren't", "'s", "isn't", "'re", "'m not", "am"],
-    questions: [
-      input("E1", "This ___ my house. It's Liam's.", ["isn't", "is not"], "Ngôi nhà là của Liam nên câu phải phủ định: This isn't my house."),
-      input("E2", "They ___ six. They're seven.", ["aren't", "are not"], "They đi với are; câu phủ định là aren't: They aren't six."),
-      input("E3", "I ___ cold. I'm hot.", ["'m not", "am not", "i'm not", "i am not"], "I đi với am; câu phủ định là I'm not cold."),
-      input("E4", "You ___ my best friend.", ["'re", "are", "you're", "you are"], "You đi với are; dạng viết tắt là You're my best friend."),
-      input("E5", "Hi, Ella. It ___ nice to meet you.", ["'s", "is", "it's", "it is"], "It đi với is; dạng viết tắt là It's nice to meet you.")
-    ]
-  },
-  {
-    letter: "F", title: "Write the words in the correct order to make questions.",
-    note: "Sắp xếp đủ các từ và viết thành câu hỏi hoàn chỉnh.", points: 3,
-    questions: [
-      input("F1", "family / your / small / Is", ["is your family small"], "Đưa Is lên đầu câu hỏi: Is your family small?"),
-      input("F2", "cousins / Joe and Ann / Are", ["are joe and ann cousins"], "Joe and Ann là hai người nên dùng Are: Are Joe and Ann cousins?"),
-      input("F3", "she / Is / old / years / eight", ["is she eight years old"], "Cụm tuổi đúng là eight years old: Is she eight years old?")
-    ]
-  },
-  {
-    letter: "G", title: "Match the words to the pictures.",
-    note: "Quan sát ba hình a-c rồi chọn chữ cái đúng cho mỗi hoạt động.", points: 3,
-    imageGallery: [
-      { label: "a", src: `${ASSET}page3-img_p2_2.png` },
-      { label: "b", src: `${ASSET}page3-img_p2_3.png` },
-      { label: "c", src: `${ASSET}page3-img_p2_8.png` }
+    "sectionImage": "assets/extracted/page1-img_p0_5.png",
+    "imageMarkers": [
+      {
+        "label": "1",
+        "left": "15%",
+        "top": "76%"
+      },
+      {
+        "label": "2",
+        "left": "32%",
+        "top": "76%"
+      },
+      {
+        "label": "3",
+        "left": "45%",
+        "top": "81%"
+      },
+      {
+        "label": "4",
+        "left": "57%",
+        "top": "76%"
+      },
+      {
+        "label": "5",
+        "left": "72%",
+        "top": "78%"
+      },
+      {
+        "label": "6",
+        "left": "88%",
+        "top": "79%"
+      }
     ],
-    questions: [
-      choice("G1", "1. sleep", ["a", "b", "c"], "b", "Hình b cho thấy một bạn đang ngủ - sleep."),
-      choice("G2", "2. eat", ["a", "b", "c"], "c", "Hình c cho thấy một bạn đang ăn - eat."),
-      choice("G3", "3. play", ["a", "b", "c"], "a", "Hình a cho thấy các bạn đang chơi - play.")
+    "questions": [
+      {
+        "id": "B1",
+        "type": "input",
+        "prompt": "Picture 1",
+        "answers": [
+          "grandfather"
+        ],
+        "explanation": "Người đàn ông lớn tuổi là grandfather - ông.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "B2",
+        "type": "input",
+        "prompt": "Picture 2",
+        "answers": [
+          "grandmother"
+        ],
+        "explanation": "Người phụ nữ lớn tuổi là grandmother - bà.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "B3",
+        "type": "input",
+        "prompt": "Picture 3",
+        "answers": [
+          "son"
+        ],
+        "explanation": "Bạn trai nhỏ là son - con trai.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "B4",
+        "type": "input",
+        "prompt": "Picture 4",
+        "answers": [
+          "father"
+        ],
+        "explanation": "Người đàn ông là father - bố.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "B5",
+        "type": "input",
+        "prompt": "Picture 5",
+        "answers": [
+          "mother"
+        ],
+        "explanation": "Người phụ nữ là mother - mẹ.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "B6",
+        "type": "input",
+        "prompt": "Picture 6",
+        "answers": [
+          "daughter"
+        ],
+        "explanation": "Bạn gái nhỏ là daughter - con gái.",
+        "image": "",
+        "points": 1
+      }
     ]
   },
   {
-    letter: "H", title: "Complete the sentences.",
-    note: "Chọn đúng con vật trong Word Bank để hoàn thành từng câu.", points: 4,
-    wordBank: ["hamster", "goldfish", "lion", "kitten", "tortoise"],
-    questions: [
-      input("H1", "A ___ lives in water.", ["goldfish", "a goldfish"], "Goldfish là cá vàng và sống trong nước."),
-      input("H2", "A ___ is a very young animal.", ["kitten", "a kitten"], "Kitten là mèo con, tức một con vật còn rất nhỏ."),
-      input("H3", "A ___ can't run. It walks very slowly.", ["tortoise", "a tortoise"], "Tortoise là rùa cạn và đi rất chậm."),
-      input("H4", "A ___ is a small, brown animal.", ["hamster", "a hamster"], "Hamster là một con vật nhỏ, thường có màu nâu.")
+    "letter": "C",
+    "title": "Listen and write the opposite of the words.",
+    "note": "Nghe audio và viết từ có nghĩa trái ngược.",
+    "points": 3,
+    "audio": "assets/audio/Listening-C.mp3",
+    "questions": [
+      {
+        "id": "C1",
+        "type": "input",
+        "prompt": "1. Write the opposite word.",
+        "answers": [
+          "son"
+        ],
+        "explanation": "Từ được đọc là daughter; từ trái nghĩa theo cặp gia đình là son.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "C2",
+        "type": "input",
+        "prompt": "2. Write the opposite word.",
+        "answers": [
+          "old"
+        ],
+        "explanation": "Từ được đọc là young; từ trái nghĩa là old.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "C3",
+        "type": "input",
+        "prompt": "3. Write the opposite word.",
+        "answers": [
+          "aunt"
+        ],
+        "explanation": "Từ được đọc là uncle; từ tương ứng chỉ người nữ là aunt.",
+        "image": "",
+        "points": 1
+      }
     ]
   },
   {
-    letter: "I", title: "Look and complete the words.",
-    note: "Nhìn hình và điền đủ chữ cái để viết đúng tên con vật.", points: 6,
-    questions: [
-      input("I1", "R _ b _ _ t", ["rabbit"], "Từ hoàn chỉnh là rabbit - con thỏ.", `${ASSET}page3-img_p2_4.png`),
-      input("I2", "B _ _ d", ["bird"], "Từ hoàn chỉnh là bird - con chim.", `${ASSET}page3-img_p2_5.png`),
-      input("I3", "L _ _ a _ d", ["lizard"], "Từ hoàn chỉnh là lizard - con thằn lằn.", `${ASSET}page3-img_p2_9.png`),
-      input("I4", "K _ _ t _ n", ["kitten"], "Từ hoàn chỉnh là kitten - mèo con.", `${ASSET}page3-img_p2_6.png`),
-      input("I5", "E _ _ p _ _ _ t", ["elephant"], "Từ hoàn chỉnh là elephant - con voi.", `${ASSET}page3-img_p2_7.png`),
-      input("I6", "G _ _ d _ _ _ h", ["goldfish"], "Từ hoàn chỉnh là goldfish - cá vàng.", `${ASSET}page3-img_p2_10.png`)
+    "letter": "D",
+    "title": "Look and complete the sentences. Use the correct form of be.",
+    "note": "Nhìn hình và chủ ngữ; điền dạng khẳng định hoặc phủ định của be vào chỗ trống.",
+    "points": 5,
+    "questions": [
+      {
+        "id": "D1",
+        "type": "input",
+        "prompt": "They ___ sisters.",
+        "answers": [
+          "are"
+        ],
+        "explanation": "They chỉ nhiều người nên đi với are: They are sisters.",
+        "image": "assets/extracted/page2-img_p1_2.png",
+        "points": 1
+      },
+      {
+        "id": "D2",
+        "type": "input",
+        "prompt": "He ___ young.",
+        "answers": [
+          "isn't",
+          "is not"
+        ],
+        "explanation": "Theo hình và đáp án gốc: He isn't young. Người đàn ông đã lớn tuổi nên phải dùng dạng phủ định isn't (is not).",
+        "image": "assets/extracted/page2-img_p1_4.png",
+        "points": 1
+      },
+      {
+        "id": "D3",
+        "type": "input",
+        "prompt": "It ___ big.",
+        "answers": [
+          "is"
+        ],
+        "explanation": "It chỉ một vật - ngôi nhà - nên đi với is: It is big.",
+        "image": "assets/extracted/page2-img_p1_3.png",
+        "points": 1
+      },
+      {
+        "id": "D4",
+        "type": "input",
+        "prompt": "We ___ friends.",
+        "answers": [
+          "are"
+        ],
+        "explanation": "We nghĩa là chúng tôi/chúng ta, chỉ nhiều người nên đi với are: We are friends.",
+        "image": "assets/extracted/page2-img_p1_5.png",
+        "points": 1
+      },
+      {
+        "id": "D5",
+        "type": "input",
+        "prompt": "She ___ cold.",
+        "answers": [
+          "isn't",
+          "is not"
+        ],
+        "explanation": "Theo hình và đáp án gốc: She isn't cold. Cô bé không lạnh nên phải dùng isn't (is not).",
+        "image": "assets/extracted/page2-img_p1_6.png",
+        "points": 1
+      }
     ]
   },
   {
-    letter: "J", title: "Circle the correct words.",
-    note: "Chọn từ chỉ định phù hợp với số ít/số nhiều và is/are.", points: 4,
-    questions: [
-      choice("J1", "___ are big animals.", ["These", "This"], "These", "Có are và animals số nhiều nên dùng These: These are big animals."),
-      choice("J2", "___ is the school playground.", ["Those", "That"], "That", "Có is và playground số ít nên dùng That: That is the school playground."),
-      choice("J3", "This ___ my aunt.", ["is", "are"], "is", "This chỉ một người và đi với is: This is my aunt."),
-      choice("J4", "___ are my pets.", ["That", "Those"], "Those", "Có are và pets số nhiều nên dùng Those: Those are my pets.")
-    ]
-  },
-  {
-    letter: "K", title: "Listen and complete the sentences.",
-    note: "Nghe audio và điền từ chỉ định còn thiếu.", points: 4,
-    audio: "assets/audio/Listening-E.mp3",
-    questions: [
-      input("K1", "___ is my friend Sam.", ["this"], "Câu trong audio là: This is my friend Sam."),
-      input("K2", "___ are Hannah's cousins.", ["those"], "Câu trong audio là: Those are Hannah's cousins."),
-      input("K3", "___ is a lion.", ["that"], "Câu trong audio là: That is a lion."),
-      input("K4", "___ are zebras.", ["these"], "Câu trong audio là: These are zebras.")
-    ]
-  },
-  {
-    letter: "L", title: "Look and write. Use is or are and the words in the box.",
-    note: "Nhìn vị trí gần/xa và số ít/số nhiều để chọn This, That, These hoặc Those.", points: 4,
-    wordBank: ["That", "These", "This", "Those"],
-    sectionImage: `${ASSET}page4-img_p3_3.png`,
-    imageMarkers: [
-      { label: "1", left: "27%", top: "57%" }, { label: "2", left: "81%", top: "31%" },
-      { label: "3", left: "57%", top: "58%" }, { label: "4", left: "5%", top: "62%" }
+    "letter": "E",
+    "title": "Complete the sentences.",
+    "note": "Dùng đúng dạng viết tắt trong Word Bank. Trang cũng chấp nhận dạng đầy đủ có cùng nghĩa.",
+    "points": 5,
+    "wordBank": [
+      "aren't",
+      "'s",
+      "isn't",
+      "'re",
+      "'m not",
+      "am"
     ],
-    questions: [
-      choice("L1", "___ are my friends.", ["This", "That", "These", "Those"], "These", "Friends là số nhiều và ở gần người nói nên dùng These are my friends."),
-      choice("L2", "___ are my parents.", ["This", "That", "These", "Those"], "Those", "Parents là số nhiều và ở xa nên dùng Those are my parents."),
-      choice("L3", "___ is my sister.", ["This", "That", "These", "Those"], "This", "Sister là một người và ở gần nên dùng This is my sister."),
-      choice("L4", "___ is her kitten.", ["This", "That", "These", "Those"], "That", "Kitten là một con vật và ở xa nên dùng That is her kitten.")
+    "questions": [
+      {
+        "id": "E1",
+        "type": "input",
+        "prompt": "This ___ my house. It's Liam's.",
+        "answers": [
+          "isn't",
+          "is not"
+        ],
+        "explanation": "Ngôi nhà là của Liam nên câu phải phủ định: This isn't my house.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "E2",
+        "type": "input",
+        "prompt": "They ___ six. They're seven.",
+        "answers": [
+          "aren't",
+          "are not"
+        ],
+        "explanation": "They đi với are; câu phủ định là aren't: They aren't six.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "E3",
+        "type": "input",
+        "prompt": "I ___ cold. I'm hot.",
+        "answers": [
+          "'m not",
+          "am not",
+          "i'm not",
+          "i am not"
+        ],
+        "explanation": "I đi với am; câu phủ định là I'm not cold.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "E4",
+        "type": "input",
+        "prompt": "You ___ my best friend.",
+        "answers": [
+          "'re",
+          "are",
+          "you're",
+          "you are"
+        ],
+        "explanation": "You đi với are; dạng viết tắt là You're my best friend.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "E5",
+        "type": "input",
+        "prompt": "Hi, Ella. It ___ nice to meet you.",
+        "answers": [
+          "'s",
+          "is",
+          "it's",
+          "it is"
+        ],
+        "explanation": "It đi với is; dạng viết tắt là It's nice to meet you.",
+        "image": "",
+        "points": 1
+      }
+    ]
+  },
+  {
+    "letter": "F",
+    "title": "Write the words in the correct order to make questions.",
+    "note": "Sắp xếp đủ các từ và viết thành câu hỏi hoàn chỉnh.",
+    "points": 3,
+    "questions": [
+      {
+        "id": "F1",
+        "type": "input",
+        "prompt": "family / your / small / Is",
+        "answers": [
+          "is your family small"
+        ],
+        "explanation": "Đưa Is lên đầu câu hỏi: Is your family small?",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "F2",
+        "type": "input",
+        "prompt": "cousins / Joe and Ann / Are",
+        "answers": [
+          "are joe and ann cousins"
+        ],
+        "explanation": "Joe and Ann là hai người nên dùng Are: Are Joe and Ann cousins?",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "F3",
+        "type": "input",
+        "prompt": "she / Is / old / years / eight",
+        "answers": [
+          "is she eight years old"
+        ],
+        "explanation": "Cụm tuổi đúng là eight years old: Is she eight years old?",
+        "image": "",
+        "points": 1
+      }
+    ]
+  },
+  {
+    "letter": "G",
+    "title": "Match the words to the pictures.",
+    "note": "Quan sát ba hình a-c rồi chọn chữ cái đúng cho mỗi hoạt động.",
+    "points": 3,
+    "imageGallery": [
+      {
+        "label": "a",
+        "src": "assets/extracted/page3-img_p2_2.png"
+      },
+      {
+        "label": "b",
+        "src": "assets/extracted/page3-img_p2_3.png"
+      },
+      {
+        "label": "c",
+        "src": "assets/extracted/page3-img_p2_8.png"
+      }
+    ],
+    "questions": [
+      {
+        "id": "G1",
+        "type": "choice",
+        "prompt": "1. sleep",
+        "options": [
+          "a",
+          "b",
+          "c"
+        ],
+        "answers": [
+          "b"
+        ],
+        "explanation": "Hình b cho thấy một bạn đang ngủ - sleep.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "G2",
+        "type": "choice",
+        "prompt": "2. eat",
+        "options": [
+          "a",
+          "b",
+          "c"
+        ],
+        "answers": [
+          "c"
+        ],
+        "explanation": "Hình c cho thấy một bạn đang ăn - eat.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "G3",
+        "type": "choice",
+        "prompt": "3. play",
+        "options": [
+          "a",
+          "b",
+          "c"
+        ],
+        "answers": [
+          "a"
+        ],
+        "explanation": "Hình a cho thấy các bạn đang chơi - play.",
+        "image": "",
+        "points": 1
+      }
+    ]
+  },
+  {
+    "letter": "H",
+    "title": "Complete the sentences.",
+    "note": "Chọn đúng con vật trong Word Bank để hoàn thành từng câu.",
+    "points": 4,
+    "wordBank": [
+      "hamster",
+      "goldfish",
+      "lion",
+      "kitten",
+      "tortoise"
+    ],
+    "questions": [
+      {
+        "id": "H1",
+        "type": "input",
+        "prompt": "A ___ lives in water.",
+        "answers": [
+          "goldfish",
+          "a goldfish"
+        ],
+        "explanation": "Goldfish là cá vàng và sống trong nước.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "H2",
+        "type": "input",
+        "prompt": "A ___ is a very young animal.",
+        "answers": [
+          "kitten",
+          "a kitten"
+        ],
+        "explanation": "Kitten là mèo con, tức một con vật còn rất nhỏ.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "H3",
+        "type": "input",
+        "prompt": "A ___ can't run. It walks very slowly.",
+        "answers": [
+          "tortoise",
+          "a tortoise"
+        ],
+        "explanation": "Tortoise là rùa cạn và đi rất chậm.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "H4",
+        "type": "input",
+        "prompt": "A ___ is a small, brown animal.",
+        "answers": [
+          "hamster",
+          "a hamster"
+        ],
+        "explanation": "Hamster là một con vật nhỏ, thường có màu nâu.",
+        "image": "",
+        "points": 1
+      }
+    ]
+  },
+  {
+    "letter": "I",
+    "title": "Look and complete the words.",
+    "note": "Nhìn hình và điền đủ chữ cái để viết đúng tên con vật.",
+    "points": 6,
+    "questions": [
+      {
+        "id": "I1",
+        "type": "input",
+        "prompt": "R _ b _ _ t",
+        "answers": [
+          "rabbit"
+        ],
+        "explanation": "Từ hoàn chỉnh là rabbit - con thỏ.",
+        "image": "assets/extracted/page3-img_p2_4.png",
+        "points": 1
+      },
+      {
+        "id": "I2",
+        "type": "input",
+        "prompt": "B _ _ d",
+        "answers": [
+          "bird"
+        ],
+        "explanation": "Từ hoàn chỉnh là bird - con chim.",
+        "image": "assets/extracted/page3-img_p2_5.png",
+        "points": 1
+      },
+      {
+        "id": "I3",
+        "type": "input",
+        "prompt": "L _ _ a _ d",
+        "answers": [
+          "lizard"
+        ],
+        "explanation": "Từ hoàn chỉnh là lizard - con thằn lằn.",
+        "image": "assets/extracted/page3-img_p2_9.png",
+        "points": 1
+      },
+      {
+        "id": "I4",
+        "type": "input",
+        "prompt": "K _ _ t _ n",
+        "answers": [
+          "kitten"
+        ],
+        "explanation": "Từ hoàn chỉnh là kitten - mèo con.",
+        "image": "assets/extracted/page3-img_p2_6.png",
+        "points": 1
+      },
+      {
+        "id": "I5",
+        "type": "input",
+        "prompt": "E _ _ p _ _ _ t",
+        "answers": [
+          "elephant"
+        ],
+        "explanation": "Từ hoàn chỉnh là elephant - con voi.",
+        "image": "assets/extracted/page3-img_p2_7.png",
+        "points": 1
+      },
+      {
+        "id": "I6",
+        "type": "input",
+        "prompt": "G _ _ d _ _ _ h",
+        "answers": [
+          "goldfish"
+        ],
+        "explanation": "Từ hoàn chỉnh là goldfish - cá vàng.",
+        "image": "assets/extracted/page3-img_p2_10.png",
+        "points": 1
+      }
+    ]
+  },
+  {
+    "letter": "J",
+    "title": "Circle the correct words.",
+    "note": "Chọn từ chỉ định phù hợp với số ít/số nhiều và is/are.",
+    "points": 4,
+    "questions": [
+      {
+        "id": "J1",
+        "type": "choice",
+        "prompt": "___ are big animals.",
+        "options": [
+          "These",
+          "This"
+        ],
+        "answers": [
+          "These"
+        ],
+        "explanation": "Có are và animals số nhiều nên dùng These: These are big animals.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "J2",
+        "type": "choice",
+        "prompt": "___ is the school playground.",
+        "options": [
+          "Those",
+          "That"
+        ],
+        "answers": [
+          "That"
+        ],
+        "explanation": "Có is và playground số ít nên dùng That: That is the school playground.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "J3",
+        "type": "choice",
+        "prompt": "This ___ my aunt.",
+        "options": [
+          "is",
+          "are"
+        ],
+        "answers": [
+          "is"
+        ],
+        "explanation": "This chỉ một người và đi với is: This is my aunt.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "J4",
+        "type": "choice",
+        "prompt": "___ are my pets.",
+        "options": [
+          "That",
+          "Those"
+        ],
+        "answers": [
+          "Those"
+        ],
+        "explanation": "Có are và pets số nhiều nên dùng Those: Those are my pets.",
+        "image": "",
+        "points": 1
+      }
+    ]
+  },
+  {
+    "letter": "K",
+    "title": "Listen and complete the sentences.",
+    "note": "Nghe audio và điền từ chỉ định còn thiếu.",
+    "points": 4,
+    "audio": "assets/audio/Listening-E.mp3",
+    "questions": [
+      {
+        "id": "K1",
+        "type": "input",
+        "prompt": "___ is my friend Sam.",
+        "answers": [
+          "this"
+        ],
+        "explanation": "Câu trong audio là: This is my friend Sam.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "K2",
+        "type": "input",
+        "prompt": "___ are Hannah's cousins.",
+        "answers": [
+          "those"
+        ],
+        "explanation": "Câu trong audio là: Those are Hannah's cousins.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "K3",
+        "type": "input",
+        "prompt": "___ is a lion.",
+        "answers": [
+          "that"
+        ],
+        "explanation": "Câu trong audio là: That is a lion.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "K4",
+        "type": "input",
+        "prompt": "___ are zebras.",
+        "answers": [
+          "these"
+        ],
+        "explanation": "Câu trong audio là: These are zebras.",
+        "image": "",
+        "points": 1
+      }
+    ]
+  },
+  {
+    "letter": "L",
+    "title": "Look and write. Use is or are and the words in the box.",
+    "note": "Nhìn vị trí gần/xa và số ít/số nhiều để chọn This, That, These hoặc Those.",
+    "points": 4,
+    "wordBank": [
+      "That",
+      "These",
+      "This",
+      "Those"
+    ],
+    "sectionImage": "assets/extracted/page4-img_p3_3.png",
+    "imageMarkers": [
+      {
+        "label": "1",
+        "left": "27%",
+        "top": "57%"
+      },
+      {
+        "label": "2",
+        "left": "81%",
+        "top": "31%"
+      },
+      {
+        "label": "3",
+        "left": "57%",
+        "top": "58%"
+      },
+      {
+        "label": "4",
+        "left": "5%",
+        "top": "62%"
+      }
+    ],
+    "questions": [
+      {
+        "id": "L1",
+        "type": "choice",
+        "prompt": "___ are my friends.",
+        "options": [
+          "This",
+          "That",
+          "These",
+          "Those"
+        ],
+        "answers": [
+          "These"
+        ],
+        "explanation": "Friends là số nhiều và ở gần người nói nên dùng These are my friends.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "L2",
+        "type": "choice",
+        "prompt": "___ are my parents.",
+        "options": [
+          "This",
+          "That",
+          "These",
+          "Those"
+        ],
+        "answers": [
+          "Those"
+        ],
+        "explanation": "Parents là số nhiều và ở xa nên dùng Those are my parents.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "L3",
+        "type": "choice",
+        "prompt": "___ is my sister.",
+        "options": [
+          "This",
+          "That",
+          "These",
+          "Those"
+        ],
+        "answers": [
+          "This"
+        ],
+        "explanation": "Sister là một người và ở gần nên dùng This is my sister.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "L4",
+        "type": "choice",
+        "prompt": "___ is her kitten.",
+        "options": [
+          "This",
+          "That",
+          "These",
+          "Those"
+        ],
+        "answers": [
+          "That"
+        ],
+        "explanation": "Kitten là một con vật và ở xa nên dùng That is her kitten.",
+        "image": "",
+        "points": 1
+      }
     ]
   }
 ];
@@ -164,7 +852,7 @@ const results = document.querySelector("#results");
 const answerReview = document.querySelector("#answerReview");
 const scoreValue = document.querySelector("#scoreValue");
 const scoreMessage = document.querySelector("#scoreMessage");
-const STORAGE_KEY = "discover1-written-test1-v1";
+const STORAGE_KEY = "discover1-written-test1-v1-source-audit-v2";
 
 renderSections();
 restoreProgress();
@@ -277,10 +965,7 @@ function normalize(value) {
   return String(value || "").toLowerCase().replace(/[’‘`]/g, "'").replace(/[?.!,]/g, "").replace(/\s+/g, " ").trim();
 }
 
-function matches(value, accepted) {
-  const normalized = normalize(value).replace(/does not/g, "doesn't").replace(/is not/g, "isn't").replace(/are not/g, "aren't");
-  return accepted.some(answer => normalize(answer).replace(/does not/g, "doesn't").replace(/is not/g, "isn't").replace(/are not/g, "aren't") === normalized);
-}
+function matches(value, accepted) { return DiscoverAnswerMatcher.matches(value, accepted); }
 
 function getMissingFields() {
   const missing = [];
