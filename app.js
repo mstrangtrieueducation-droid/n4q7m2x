@@ -1004,7 +1004,7 @@ function renderReview(review) {
   return `<article class="review-card ${review.correct ? "" : "is-wrong"}">
     <div class="review-head"><h3>Câu ${review.label}</h3><span class="review-status">${review.correct ? "1/1" : "0/1"} điểm</span></div>
     <p class="review-question">${review.question.prompt}</p>
-    <div class="review-answer"><span>Em trả lời: <b>${escapeHtml(review.value || "(trống)")}</b></span><span>Đáp án: <b>${escapeHtml(DiscoverAnswerDisplay.formatAnswer(review.question.answers[0]))}</b></span></div>
+    <div class="review-answer"><span>Em trả lời: <b>${escapeHtml(review.value || "(trống)")}</b></span><span>Đáp án: <b>${escapeHtml(DiscoverAnswerDisplay.formatAnswer(review.question.answers[0], {section: review.section, question: review.question}))}</b></span></div>
     <p class="explanation"><b>Giải thích:</b> ${escapeHtml(DiscoverAnswerDisplay.formatExplanation(review.question.explanation))}</p>
   </article>`;
 }
